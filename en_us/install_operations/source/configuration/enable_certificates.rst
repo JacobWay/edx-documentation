@@ -83,7 +83,7 @@ Configure Certificates for Your Open edX Instance
    ``document_body_class_append``. The mode name should match your course mode
    name exactly. An example follows.
 
-   For more information about course modes, sometimes called enrollment modes
+   For more information about course modes, also called enrollment modes
    or enrollment tracks, see :ref:`enrollment track<enrollment_track_g>`.
 
    .. code-block:: none
@@ -171,6 +171,10 @@ organization. For example, you can change the images that appear on
 certificates for each course mode that your organization supports, as well as
 fonts and colors that are used on certificates.
 
+To issue certificates in more than one language, follow the steps in
+:ref:`Enable NonEnglish Certificates`.
+
+
 Assets for HTML certificates exist in the following locations.
 
 * ``lms/templates/certificates`` - this folder contains .html files for
@@ -195,6 +199,18 @@ certificate configuration that is used to generate certificates for their
 course, including adding signatories and images for organization logo and
 signature images for signatories. For details, :ref:`opencoursestaff:Setting Up
 Certificates` in *Building and Running an Open edX Course*.
+
+
+.. _Enable NonEnglish Certificates:
+
+*************************************************
+Enable Non-English Certificates for a Course Run
+*************************************************
+
+
+
+
+
 
 .. _Generate Certificates for a Course:
 
