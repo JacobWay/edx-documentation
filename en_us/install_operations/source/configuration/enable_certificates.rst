@@ -161,6 +161,7 @@ The ``AUDIT_CERT_CUTOFF_DATE`` feature flag affects only the generation of
 audit certificates. Learners who audit courses continue to receive grades,
 which are shown on the course **Progress** page.
 
+
 ******************************************************
 Customize Certificate Templates For Your Organization
 ******************************************************
@@ -172,7 +173,7 @@ certificates for each course mode that your organization supports, as well as
 fonts and colors that are used on certificates.
 
 To issue certificates in more than one language, follow the steps in
-:ref:`Enable NonEnglish Certificates`.
+:ref:`Certificates in Additional Languages`.
 
 
 Assets for HTML certificates exist in the following locations.
@@ -190,8 +191,9 @@ Assets for HTML certificates exist in the following locations.
      details, see :ref:`opencoursestaff:Setting Up Certificates` in *Building
      and Running an Open edX Course*.
 
+
 *****************************************
-Configure Certificates Within Each Course
+Configure Course Certificates in Studio
 *****************************************
 
 Within Studio, course team members with the Admin role can create and edit a
@@ -201,14 +203,109 @@ signature images for signatories. For details, :ref:`opencoursestaff:Setting Up
 Certificates` in *Building and Running an Open edX Course*.
 
 
-.. _Enable NonEnglish Certificates:
+.. _Certificates in Additional Languages:
 
-*************************************************
-Enable Non-English Certificates for a Course Run
-*************************************************
+************************************************************
+Enable Certificates in Additional Languages
+************************************************************
+
+To enable generating course certificates in languages other than the
+default language of your platform, follow these steps.
+
+#. Ensure that the language you want to generate certificates in is defined in
+   the ``CERTIFICATE_LANGUAGES`` setting in your Django settings file.
+
+#. Access the LMS Django Administration site for your instance of Open edX.
+   To do this, go to ``https://<host name of your Open edX instance>/admin``.
+   For example, this might be ``https://YourOrganization.com/admin``.
+
+#. Under **Site Administration** > **Certificates** > **Certificate
+   templates**, add a certificate template for each additional language in
+   which you want to generate certificates.
+
+#. In each certificate template, modify configuration parameters as required.
+
+   * To apply the template to all course runs in the specified language from a
+     specific organization, set the following parameters.
+
+     - **Language** - select the language that you want the certificate to be
+       generated in.
+
+     - **Organization ID** - enter the ID for the organization whose courses
+       should use this certificate template.
+
+     - **Mode** - specify the course mode for which certificates should use
+       this certificate template.
+
+     - **Is Active** - select this checkbox to make this template active.
+
+   * To apply the template only to a specific course run, set the following parameters.
+   
+     - **Language** - select the language that you want the certificate to be
+       generated in.
+
+     - **Organization ID** - specify ``None``.
+     
+     - **Course key** - enter the course key for the course run which should
+       use this certificate template.
+     
+     - **Mode** - specify the course mode for which certificates should use
+       this certificate template.
+     
+     - **Is Active** - select this checkbox to make this template active.
+
+  .. note:: If more than one certificate template would apply to a course run,
+     the most specific (lowest level) template applies. For example, if a
+     certificate template is defined for all courses in an organization and
+     another template exists for a specific course run, the template for the
+     course run applies to the course run.
+
+#. Save each certificate template.
+
+#. If you are enabling additional language certificates only for a specific
+   course, in LMS Django Administration, under **Site Administration** >
+   **Certificates**, add a certificate generation course setting.
+
+#. In the **Course key** field, specify the course run for which you are
+   enabling language specific certificate templates.
+
+#. Select **Language specific templates enabled**, and save the configuration.
 
 
+.. _Display Hours of Effort:
 
+=========================================
+Display Hours of Effort on Certificates
+=========================================
+
+To display hours of effort for a course run on the course certificate, follow
+these steps.
+
+
+#. Log in to the Django Administration site for the Discovery service for your
+   instance of Open edX. To do this, go to ``https://<host name of your Open
+   edX instance>/admin``. For example, this might be
+   ``https://YourOrganization.com/admin``.
+
+#. Under **Course Metadata** > **Course Runs** locate the course run, and make
+   sure there are values for the following attributes.
+
+   * Max effort
+   * Weeks to complete
+
+#. Log in to the LMS Django Administration site for your instance of Open edX.
+   To do this, go to ``https://<host name of your Open edX instance>/admin``.
+   For example, this might be ``https://YourOrganization.com/admin``.
+
+#. Under **Site Administration** > **Certificates**, add or edit a
+   certificate generation course setting.
+
+#. Select ``Yes`` for **Include hours of effort** and save the configuration.
+
+#. Under **Site Administration** > **Certificates**, add or edit a certificate
+   template.
+
+#. In the **Template** field, enter a    
 
 
 
